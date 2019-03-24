@@ -1,1 +1,1 @@
-echo hahaha; ls
+<script>alert(0)</script>
